@@ -3,19 +3,23 @@ import { fromJS } from 'immutable';
 
 import { COIN_NAME_UPDATE } from '../constants/pricesConstants';
 
-const initialStoreState = fromJS({
-  name: '',
+const initialPrices = fromJS({
+  name: 'BTC',
 });
 
-const name = (state = initialStoreState, action) => {
+const initialStoreState = fromJS({
+  prices: initialPrices,
+});
+
+const display = (state = initialStoreState, action) => {
   switch (action.type) {
     case COIN_NAME_UPDATE:
-      return state.set('name', action.text);
+      return state.update('name', () => action.text);
     default:
       return state;
   }
 };
 
-const pricesReducer = combineReducers({ name });
+const rootReducer = combineReducers({ display });
 
-export default pricesReducer;
+export default rootReducer;

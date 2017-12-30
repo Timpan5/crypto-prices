@@ -1,8 +1,9 @@
 import { createStore } from 'redux';
-import pricesReducer from '../reducers/pricesReducer';
+import rootReducer from '../reducers/rootReducer';
 
 const configureStore = (railsProps) => (
-  createStore(pricesReducer, railsProps)
+  createStore(rootReducer, railsProps,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
 
 export default configureStore;

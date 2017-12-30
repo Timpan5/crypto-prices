@@ -4,6 +4,6 @@ class PricesController < ApplicationController
   layout "prices"
 
   def index
-    @prices_props = { name: "Stranger" }
+    # @prices_props = { name: "btc" }
   end
 end
