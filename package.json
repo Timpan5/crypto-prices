@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.2.0",
+    "axios": "^0.17.1",
     "babel-preset-react": "^6.24.1",
     "coffeescript": "1.12.7",
     "immutable": "^3.8.2",
@@ -11,7 +12,8 @@
     "react-dom": "^16.2.0",
     "react-on-rails": "^10.0.2",
     "react-redux": "^5.0.6",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.9.7"
