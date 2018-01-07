@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import functional from 'react-functional'
 
-export default function Prices(props) {
+function Prices(props) {
   return (
     <div>
       { props.name }
@@ -9,49 +10,13 @@ export default function Prices(props) {
   );
 }
 
-Prices.propTypes = {
-  name: PropTypes.string.isRequired,
+Prices.componentDidMount = (props) => {
+  setInterval(props.fetchCoinPrice, 3000, props.name);
 };
 
-// export default class Prices extends React.Component {
-//   static propTypes = {
-//     name: PropTypes.string.isRequired, // this is passed from the Rails view
-//   };
-//
-//   /**
-//    * @param props - Comes from your rails view.
-//    */
-//   constructor(props) {
-//     super(props);
-//
-//     // How to set initial state in ES6 class syntax
-//     // https://facebook.github.io/react/docs/reusable-components.html#es6-classes
-//     this.state = { name: this.props.name };
-//   }
-//
-//   updateName = (name) => {
-//     this.setState({ name });
-//   };
-//
-//   render() {
-//     return (
-//       <div>
-//         <h3>
-//           Hello, {this.state.name}!
-//         </h3>
-//         <hr />
-//         <form >
-//           <label htmlFor="name">
-//             Say hello to:
-//           </label>
-//           <input
-//             id="name"
-//             type="text"
-//             value={this.state.name}
-//             onChange={(e) => this.updateName(e.target.value)}
-//           />
-//         </form>
-//       </div>
-//     );
-//   }
-// }
+Prices.propTypes = {
+  name: PropTypes.string.isRequired,
+  fetchCoinPrice: PropTypes.func.isRequired,
+};
+
+export default functional(Prices);
