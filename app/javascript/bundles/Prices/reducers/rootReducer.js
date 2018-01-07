@@ -1,20 +1,22 @@
 import { combineReducers } from 'redux';
-import { fromJS } from 'immutable';
+import { fromJS, List, Map } from 'immutable';
 
-import { COIN_NAME_UPDATE } from '../constants/pricesConstants';
+import * as priceConstants from '../constants/pricesConstants';
 
 const initialPrices = fromJS({
-  name: 'BTC',
+  'BTC': [],
 });
 
-const initialStoreState = fromJS({
+const initialStoreState = new Map({
   prices: initialPrices,
 });
 
 const display = (state = initialStoreState, action) => {
   switch (action.type) {
-    case COIN_NAME_UPDATE:
-      return state.update('name', () => action.text);
+    // case priceConstants.COIN_NAME_UPDATE:
+    //   return state.prices.update('name', () => action.text);
+    case priceConstants.COIN_PRICE_UPDATE:
+      return state.updateIn(['prices', action.coin], (list) => list.push(action.price));
     default:
       return state;
   }

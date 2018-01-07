@@ -1,13 +1,18 @@
 import { call, takeLatest, select, put } from 'redux-saga/effects';
 import { FETCH_COIN_PRICE } from '../constants/pricesConstants';
-// import { getPriceFromApi } from '../sources/priceBoxSources';
+import { getPriceFromApi } from '../sources/priceBoxSources';
+import { coinPriceUpdate } from '../actions/pricesActionCreators';
 
 
-function* coinPrice() {
+function* coinPrice(action) {
   try {
-    // var price = yield call(getPriceFromApi);
-  } catch (error) {
+    const ticker = yield call(getPriceFromApi);
+    const price = ticker.data[6];
 
+    yield put(coinPriceUpdate(action.coin, price));
+
+  } catch (error) {
+    console.log('coinPriceSaga: ', error);
   }
 }
 
