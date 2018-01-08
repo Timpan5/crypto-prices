@@ -6,9 +6,8 @@ import { getPriceFromApi } from '../sources/priceBoxSources';
 
 const mapStateToProps = (state) => {
   return ({
-  name: state.display.getIn(['prices', 'BTC']).toString(),
   coin: 'BTC',
-  // name: getPriceFromApi(),
+  priceData: state.display.getIn(['prices', 'BTC']),
 })};
 
 export default connect(mapStateToProps, actions)(Prices);
