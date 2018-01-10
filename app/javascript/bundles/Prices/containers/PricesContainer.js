@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Prices from '../components/Prices';
 import * as actions from '../actions/pricesActionCreators';
 
-import { getPriceFromApi } from '../sources/priceBoxSources';
+import { getPriceFromBitfinex } from '../sources/priceSources';
 
 const mapStateToProps = (state) => {
   return ({
