@@ -4,14 +4,12 @@ import functional from 'react-functional'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 function Prices(props) {
-  const bitfinexData = props.priceData.reduce((array, price) => {
-    array.push({ Bitfinex: price });
-    return array;
-  }, []);
+  // const bitfinexData = props.bitfinexData.reduce((array, price) => array.concat({ Bitfinex: price }), []);
+  // const bittrexData = props.bittrexData.reduce((array, price) => array.concat({ Bittrex: price }), []);
 
   return (
     <div>
-      <LineChart width={600} height={300} data={bitfinexData}
+      <LineChart width={600} height={300} data={bitfinexData.concat(bittrexData)}
          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
          <XAxis dataKey="name"/>
          <YAxis type="number" domain={['dataMin - 25', 'dataMax + 25']} allowDecimals={false} scale="linear" />
@@ -19,9 +17,9 @@ function Prices(props) {
          <Tooltip/>
          <Legend />
          <Line type="monotone" dataKey="Bitfinex" stroke="#8884d8" activeDot={{r: 8}}/>
+         <Line type="monotone" dataKey="Bittrex" stroke="#82ca9d" activeDot={{r: 8}}/>
       </LineChart>
       { props.coin }
-      { props.priceData.toJS() }
     </div>
   );
 }
@@ -33,8 +31,9 @@ Prices.componentDidMount = (props) => {
 
 Prices.propTypes = {
   coin: PropTypes.string.isRequired,
-  priceData: PropTypes.object.isRequired,
   fetchCoinPrice: PropTypes.func.isRequired,
+  // bitfinexData: PropTypes.object.isRequired,
+  // bittrexData: PropTypes.object.isRequired,
 };
 
 export default functional(Prices);

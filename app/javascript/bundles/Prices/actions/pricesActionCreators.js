@@ -6,9 +6,10 @@ export const updateName = (text) => ({
   text,
 });
 
-export const coinPriceUpdate = (coin, price) => ({
+export const coinPriceUpdate = (coin, exchange, price) => ({
   type: priceConstants.COIN_PRICE_UPDATE,
   coin,
+  exchange,
   price,
 });
 
