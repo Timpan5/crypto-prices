@@ -1,16 +1,10 @@
 import * as priceConstants from '../constants/pricesConstants';
 import { COIN_PRICE_UPDATE } from '../constants/pricesConstants';
 
-export const updateName = (text) => ({
-  type: priceConstants.COIN_NAME_UPDATE,
-  text,
-});
-
-export const coinPriceUpdate = (coin, exchange, price) => ({
+export const coinPriceUpdate = (coin, pricesMap) => ({
   type: priceConstants.COIN_PRICE_UPDATE,
   coin,
-  exchange,
-  price,
+  pricesMap,
 });
 
 export const fetchCoinPrice = (coin) => ({

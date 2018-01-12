@@ -6,10 +6,7 @@ import * as priceConstants from '../constants/pricesConstants';
 const maxChartDataPoints = 25;
 
 const initialPrices = fromJS({
-  'BTC': {
-    Bitfinex: [],
-    Bittrex: [],
-  },
+  'BTC': [],
 });
 
 const initialStoreState = new Map({
@@ -17,14 +14,12 @@ const initialStoreState = new Map({
 });
 
 function coinPriceUpdate(state, action) {
-  return state.updateIn(['prices', action.coin, action.exchange], (list) =>
-    list.size >= maxChartDataPoints ? list.shift().push(action.price) : list.push(action.price));
+  return state.updateIn(['prices', action.coin], (list) =>
+    list.size >= maxChartDataPoints ? list.shift().push(action.pricesMap) : list.push(action.pricesMap));
 }
 
 const display = (state = initialStoreState, action) => {
   switch (action.type) {
-    // case priceConstants.COIN_NAME_UPDATE:
-    //   return state.prices.update('name', () => action.text);
     case priceConstants.COIN_PRICE_UPDATE:
       return coinPriceUpdate(state, action);
     default:
