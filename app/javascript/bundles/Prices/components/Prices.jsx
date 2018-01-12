@@ -7,7 +7,8 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 function Prices(props) {
   return (
     <div>
-      <LineChart width={600} height={300} data={props.priceData.toJS()}
+      { props.coin }
+      <LineChart width={800} height={400} data={props.priceData.toJS()}
          margin={{top: 5, right: 30, left: 20, bottom: 5}}>
          <XAxis dataKey="name"/>
          <YAxis type="number" domain={['dataMin - 25', 'dataMax + 25']} allowDecimals={false} scale="linear" />
@@ -16,8 +17,10 @@ function Prices(props) {
          <Legend />
          <Line type="monotone" dataKey="Bitfinex" stroke="#8884d8" activeDot={{r: 8}}/>
          <Line type="monotone" dataKey="Bittrex" stroke="#82ca9d" activeDot={{r: 8}}/>
+         <Line type="monotone" dataKey="Poloniex" stroke="#ed1047" activeDot={{r: 8}}/>
+         <Line type="monotone" dataKey="Hitbtc" stroke="#15f7d1" activeDot={{r: 8}}/>
+         <Line type="monotone" dataKey="Binance" stroke="#f7ab15" activeDot={{r: 8}}/>
       </LineChart>
-      { props.coin }
     </div>
   );
 }
