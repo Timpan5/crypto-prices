@@ -3,8 +3,8 @@ import PriceBox from '../components/PriceBox';
 
 function mapStateToProps(state) {
   return {
-    todos: 'test', 
+    latestPriceData: state.display.getIn(['prices', 'BTC']).last(),
   }
 }
 
-export default connect(mapStateToProps, actions)(Prices);
+export default connect(mapStateToProps)(PriceBox);

@@ -3,7 +3,7 @@ import { fromJS, List, Map } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
 
-const maxChartDataPoints = 25;
+const MAX_CHART_DATA_POINTS = 25;
 
 const initialPrices = fromJS({
   'BTC': [],
@@ -15,7 +15,7 @@ const initialStoreState = new Map({
 
 function coinPriceUpdate(state, action) {
   return state.updateIn(['prices', action.coin], (list) =>
-    list.size >= maxChartDataPoints ? list.shift().push(action.pricesMap) : list.push(action.pricesMap));
+    list.size >= MAX_CHART_DATA_POINTS ? list.shift().push(action.pricesMap) : list.push(action.pricesMap));
 }
 
 const display = (state = initialStoreState, action) => {
