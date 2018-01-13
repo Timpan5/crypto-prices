@@ -1,0 +1,56 @@
+#pricebox-container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+
+  .pricebox {
+    flex-grow: 1;
+    text-align: center;
+    margin: 4px;
+  }
+}
+
+#Bitfinex-box {
+  border: 2px solid #8884d8;
+
+  .panel-heading {
+    background-color: #8884d8;
+    filter: brightness(150%);
+  }
+}
+
+#Bittrex-box {
+  border: 2px solid #82ca9d;
+
+  .panel-heading {
+    background-color: #82ca9d;
+    filter: brightness(125%);
+  }
+}
+
+#Poloniex-box {
+  border: 2px solid #ed1047;
+
+  .panel-heading {
+    background-color: #ed1047;
+    filter: brightness(110%);
+  }
+}
+
+#Hitbtc-box {
+  border: 2px solid #15f7d1;
+
+  .panel-heading {
+    background-color: #15f7d1;
+    filter: brightness(110%);
+  }
+}
+
+#Binance-box {
+  border: 2px solid #f7ab15;
+
+  .panel-heading {
+    background-color: #f7ab15;
+    filter: brightness(125%);
+  }
+}
