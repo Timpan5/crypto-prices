@@ -3,11 +3,19 @@ import Prices from '../components/Prices';
 import * as actions from '../actions/pricesActionCreators';
 
 const mapStateToProps = (state) => {
-  const currentCoin = state.display.get('currentCoin');
+  const currentCoin = state.get('currentCoin');
   return ({
     coin: currentCoin,
-    priceData: state.display.getIn(['prices', currentCoin]),
+    priceData: state.getIn(['prices', currentCoin]),
   });
 };
 
-export default connect(mapStateToProps, actions)(Prices);
+const mergeProps = (stateProps, dispatchProps, ownProps)  => {
+  return ({
+    coin: stateProps.coin,
+    priceData: stateProps.priceData,
+    fetchCoinPrice: dispatchProps.fetchCoinPrice,
+  });
+};
+
+export default connect(mapStateToProps, actions, mergeProps)(Prices);

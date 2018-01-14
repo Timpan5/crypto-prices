@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { fromJS, List, Map } from 'immutable';
 
 import * as priceConstants from '../constants/pricesConstants';
+import * as headerConstants from '../constants/headerConstants';
 
 const MAX_CHART_DATA_POINTS = 25;
 
@@ -20,15 +21,19 @@ function coinPriceUpdate(state, action) {
     list.size >= MAX_CHART_DATA_POINTS ? list.shift().push(action.pricesMap) : list.push(action.pricesMap));
 }
 
-const display = (state = initialStoreState, action) => {
+function coinNameUpdate(state, action) {
+  return state.update('currentCoin', () => action.coinName);
+}
+
+const rootReducer = (state = initialStoreState, action) => {
   switch (action.type) {
     case priceConstants.COIN_PRICE_UPDATE:
       return coinPriceUpdate(state, action);
+    case headerConstants.COIN_NAME_UPDATE:
+      return coinNameUpdate(state, action);
     default:
       return state;
   }
 };
-
-const rootReducer = combineReducers({ display });
 
 export default rootReducer;

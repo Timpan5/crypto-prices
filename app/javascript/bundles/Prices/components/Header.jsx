@@ -4,11 +4,16 @@ import React from 'react';
 function Header(props) {
   return (
     <div id="header">
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <span class="navbar-brand">Crypto Prices</span>
-            <button type="button" class="btn btn-default navbar-btn">Bitcoin</button>
+      <nav className="navbar navbar-default navbar-fixed-top">
+        <div className="container-fluid">
+          <div className="navbar-header">
+            <span className="navbar-brand">Crypto Prices</span>
+            <button type="button" className="btn btn-default navbar-btn" onClick={() => props.coinNameUpdate('BTC')}>
+              Bitcoin
+            </button>
+            <button type="button" className="btn btn-default navbar-btn" onClick={() => props.coinNameUpdate('ETH')}>
+              Ethereum
+            </button>
           </div>
         </div>
       </nav>
@@ -18,6 +23,7 @@ function Header(props) {
 
 Header.propTypes = {
   coin: PropTypes.string.isRequired,
+  coinNameUpdate: PropTypes.func.isRequired,
 };
 
 export default Header;

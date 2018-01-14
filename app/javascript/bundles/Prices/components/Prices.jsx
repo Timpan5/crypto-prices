@@ -43,8 +43,8 @@ Prices.componentDidMount = (props) => {
 
 Prices.propTypes = {
   coin: PropTypes.string.isRequired,
-  fetchCoinPrice: PropTypes.func.isRequired,
   priceData: ImmutablePropTypes.list.isRequired,
+  fetchCoinPrice: PropTypes.func.isRequired,
 };
 
 export default functional(Prices);

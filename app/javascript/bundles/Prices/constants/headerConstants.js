@@ -1,0 +1,1 @@
+export const COIN_NAME_UPDATE = 'COIN_NAME_UPDATE';

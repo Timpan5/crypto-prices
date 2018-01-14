@@ -3,7 +3,7 @@ import PriceBox from '../components/PriceBox';
 
 function mapStateToProps(state) {
   return {
-    latestPriceData: state.display.getIn(['prices', 'BTC']).last(),
+    latestPriceData: state.getIn(['prices', 'BTC']).last(),
   }
 }
 
