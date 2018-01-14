@@ -6,7 +6,6 @@ export const coinPriceUpdate = (coin, pricesMap) => ({
   pricesMap,
 });
 
-export const fetchCoinPrice = (coin) => ({
+export const fetchCoinPrice = () => ({
   type: priceConstants.FETCH_COIN_PRICE,
-  coin,
 });

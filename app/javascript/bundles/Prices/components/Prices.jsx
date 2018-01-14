@@ -12,7 +12,7 @@ function renderPriceChart(priceData) {
         <LineChart width={800} height={400} data={priceData.toJS()}
            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
            <XAxis dataKey="name"/>
-           <YAxis type="number" domain={['dataMin - 25', 'dataMax + 25']} allowDecimals={false} scale="linear" />
+           <YAxis type="number" domain={['dataMin - 5', 'dataMax + 5']} allowDecimals={false} scale="linear" />
            <CartesianGrid strokeDasharray="3"/>
            <Tooltip/>
            <Legend />
@@ -37,8 +37,8 @@ function Prices(props) {
 }
 
 Prices.componentDidMount = (props) => {
-  props.fetchCoinPrice(props.coin);
-  setInterval(props.fetchCoinPrice, 3500, props.coin);
+  props.fetchCoinPrice();
+  setInterval(props.fetchCoinPrice, 3500);
 };
 
 Prices.propTypes = {
