@@ -3,9 +3,10 @@ import Prices from '../components/Prices';
 import * as actions from '../actions/pricesActionCreators';
 
 const mapStateToProps = (state) => {
+  const currentCoin = state.display.get('currentCoin');
   return ({
-  coin: 'BTC',
-  priceData: state.display.getIn(['prices', 'BTC']),
+    coin: currentCoin,
+    priceData: state.display.getIn(['prices', currentCoin]),
 })};
 
 export default connect(mapStateToProps, actions)(Prices);

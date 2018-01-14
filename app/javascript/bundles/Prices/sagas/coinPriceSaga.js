@@ -33,7 +33,7 @@ function* coinPrice(action) {
     yield put(coinPriceUpdate(action.coin, pricesMap));
 
   } catch (error) {
-    console.log('coinPriceSaga: ', error);
+    console.log('coinPriceSaga error: ', error);
   }
 }
 

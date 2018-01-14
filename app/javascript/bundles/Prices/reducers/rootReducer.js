@@ -7,9 +7,11 @@ const MAX_CHART_DATA_POINTS = 25;
 
 const initialPrices = fromJS({
   'BTC': [],
+  'ETH': [],
 });
 
 const initialStoreState = new Map({
+  currentCoin: 'BTC',
   prices: initialPrices,
 });
 
