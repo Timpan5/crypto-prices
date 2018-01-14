@@ -7,6 +7,7 @@ const mapStateToProps = (state) => {
   return ({
     coin: currentCoin,
     priceData: state.display.getIn(['prices', currentCoin]),
-})};
+  });
+};
 
 export default connect(mapStateToProps, actions)(Prices);

@@ -2,11 +2,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from '../store/pricesStore';
-import PricesContainer from '../containers/PricesContainer';
+import AppLayout from '../components/AppLayout';
 
 const PricesApp = (props) => (
   <Provider store={store}>
-    <PricesContainer />
+    <AppLayout />
   </Provider>
 );
 

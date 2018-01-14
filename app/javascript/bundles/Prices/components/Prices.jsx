@@ -30,7 +30,6 @@ function renderPriceChart(priceData) {
 function Prices(props) {
   return (
     <div>
-      { props.coin }
       <PriceBoxContainer />
       {renderPriceChart(props.priceData)}
     </div>
