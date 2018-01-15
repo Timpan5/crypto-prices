@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import functional from 'react-functional';
+import { triggerGreenFlash, triggerRedFlash } from '../utils/flash';
 
 function PriceBox(props) {
   function renderBox(price, exchange) {
@@ -20,8 +22,20 @@ function PriceBox(props) {
   );
 }
 
+PriceBox.componentDidUpdate = (props, prevProps) => {
+  if (props.latestPriceData && prevProps.latestPriceData) {
+    const flashGreenExchanges = props.latestPriceData.filter(
+      (price, exchange) => price > prevProps.latestPriceData.get(exchange));
+    const flashRedExchanges = props.latestPriceData.filter(
+      (price, exchange) => price < prevProps.latestPriceData.get(exchange));
+
+    triggerGreenFlash(flashGreenExchanges);
+    triggerRedFlash(flashRedExchanges);
+  }
+}
+
 PriceBox.propTypes = {
   latestPriceData: PropTypes.object,
 };
 
-export default PriceBox;
+export default functional(PriceBox);

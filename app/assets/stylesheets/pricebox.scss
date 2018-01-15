@@ -7,6 +7,15 @@
     flex-grow: 1;
     text-align: center;
     margin: 4px;
+    transition: 1s;
+  }
+
+  .flash-green {
+    background-color: #83f759;
+  }
+
+  .flash-red {
+    background-color: red;
   }
 }
 
@@ -33,7 +42,7 @@
 
   .panel-heading {
     background-color: #ed1047;
-    filter: brightness(110%);
+    filter: brightness(105%);
   }
 }
 
