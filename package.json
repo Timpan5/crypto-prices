@@ -12,6 +12,7 @@
     "react-dom": "^16.2.0",
     "react-functional": "^2.0.0",
     "react-immutable-proptypes": "^2.1.0",
+    "react-loading": "^1.0.3",
     "react-on-rails": "^10.0.2",
     "react-redux": "^5.0.6",
     "react-transition-group": "1.x",

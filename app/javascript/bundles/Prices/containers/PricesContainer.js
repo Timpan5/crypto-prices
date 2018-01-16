@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import Prices from '../components/Prices';
 import * as actions from '../actions/pricesActionCreators';
 
+const shouldRenderSpinner = (list) => list.isEmpty();
+
 const mapStateToProps = (state) => {
   const currentCoin = state.get('currentCoin');
   return ({
@@ -15,6 +17,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps)  => {
     coin: stateProps.coin,
     priceData: stateProps.priceData,
     fetchCoinPrice: dispatchProps.fetchCoinPrice,
+    renderSpinner: shouldRenderSpinner(stateProps.priceData),
   });
 };
 

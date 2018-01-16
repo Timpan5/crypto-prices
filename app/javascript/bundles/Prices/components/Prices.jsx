@@ -4,6 +4,9 @@ import functional from 'react-functional'
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PriceBoxContainer from '../containers//PriceBoxContainer';
+import ReactLoading from 'react-loading';
+
+const renderSpinner = () => (<ReactLoading className='spinner' type="spokes" color="#94ff11" />);
 
 function renderPriceChart(priceData) {
   return (
@@ -31,7 +34,7 @@ function Prices(props) {
   return (
     <div>
       <PriceBoxContainer />
-      {renderPriceChart(props.priceData)}
+      {props.renderSpinner ? renderSpinner() : renderPriceChart(props.priceData)}
     </div>
   );
 }
@@ -45,6 +48,7 @@ Prices.propTypes = {
   coin: PropTypes.string.isRequired,
   priceData: ImmutablePropTypes.list.isRequired,
   fetchCoinPrice: PropTypes.func.isRequired,
+  renderSpinner: PropTypes.bool.isRequired,
 };
 
 export default functional(Prices);

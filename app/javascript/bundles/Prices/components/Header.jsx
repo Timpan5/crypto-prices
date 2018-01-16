@@ -2,21 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 function Header(props) {
-  function generateClickHandler(coinName) {
-    props.coinNameUpdate(coinName);
-    props.fetchCoinPrice();
-  }
-
   const renderBitcoinButton = () => (
     <button type="button" className="btn btn-default navbar-btn"
-      onClick={() => generateClickHandler('BTC', props.coinNameUpdate, props.fetchCoinPrice)}>
+      onClick={() => props.coinNameUpdate('BTC')}>
       Bitcoin
     </button>
   );
 
   const renderEthereumButton = () => (
     <button type="button" className="btn btn-default navbar-btn"
-      onClick={() => generateClickHandler('ETH', props.coinNameUpdate, props.fetchCoinPrice)}>
+      onClick={() => props.coinNameUpdate('ETH')}>
       Ethereum
     </button>
   );
@@ -39,7 +34,6 @@ function Header(props) {
 Header.propTypes = {
   coin: PropTypes.string.isRequired,
   coinNameUpdate: PropTypes.func.isRequired,
-  fetchCoinPrice: PropTypes.func.isRequired,
 };
 
 export default Header;
