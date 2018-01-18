@@ -1,20 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 function Header(props) {
-  const renderBitcoinButton = () => (
-    <button type="button" className="btn btn-default navbar-btn"
-      onClick={() => props.coinNameUpdate('BTC')}>
-      Bitcoin
+  const renderCoinButton = (abbreviation, coinName) => (
+    <button type="button" className="btn btn-default navbar-btn" key={abbreviation}
+      onClick={() => props.coinNameUpdate(abbreviation)}>
+      {coinName}
     </button>
   );
 
-  const renderEthereumButton = () => (
-    <button type="button" className="btn btn-default navbar-btn"
-      onClick={() => props.coinNameUpdate('ETH')}>
-      Ethereum
-    </button>
-  );
+  const coinButtons = props.coinOptions.reduce((buttons, name, abbreviation) => (
+    buttons.concat([renderCoinButton(abbreviation, name)])
+  ), []);
 
   return (
     <div id="header">
@@ -22,8 +20,7 @@ function Header(props) {
         <div className="container-fluid">
           <div className="navbar-header">
             <span className="navbar-brand">Crypto Prices</span>
-            {renderBitcoinButton()}
-            {renderEthereumButton()}
+            {coinButtons}
           </div>
         </div>
       </nav>
@@ -34,6 +31,7 @@ function Header(props) {
 Header.propTypes = {
   coin: PropTypes.string.isRequired,
   coinNameUpdate: PropTypes.func.isRequired,
+  coinOptions: ImmutablePropTypes.map.isRequired,
 };
 
 export default Header;
